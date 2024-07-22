@@ -27,6 +27,8 @@ public class DiscordListener extends ListenerAdapter {
         long channelID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_CHANNEL_ID_KEY, 0L);
         
         if (serverID == 0 || channelID == 0) {
+            Bukkit.getLogger().log(Level.INFO, "Cannot send minecraft message: one of the IDs isn't set in prefs");
+            
             return;
         }
         
@@ -34,6 +36,8 @@ public class DiscordListener extends ListenerAdapter {
             Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE +  "[Discord] " + ChatColor.WHITE + ChatColor.BOLD + event.getAuthor().getEffectiveName() + ": " + ChatColor.RESET + event.getMessage().getContentStripped());
             
             event.getMessage().addReaction(Emoji.fromUnicode("U+1F441")).queue();
+        } else {
+            Bukkit.getLogger().log(Level.INFO, "Cannot send minecraft message: Server ID or channel ID aren't set correctly");
         }
     }
 }

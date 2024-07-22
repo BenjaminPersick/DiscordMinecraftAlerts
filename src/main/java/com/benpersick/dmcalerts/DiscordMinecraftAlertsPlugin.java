@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
+import java.util.EnumSet;
 import java.util.prefs.*;
 import javax.annotation.Nullable;
 
@@ -52,7 +53,7 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         	return false;
         }
         
-        discordBot = JDABuilder.createDefault(discordToken, GatewayIntent.MESSAGE_CONTENT)
+        discordBot = JDABuilder.createDefault(discordToken, EnumSet.of(GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT))
                                .addEventListeners(new DiscordListener())
                                .setActivity(Activity.playing("Fortnite"))
 				   			   .build();
