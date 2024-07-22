@@ -51,6 +51,7 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         }
         
         discordBot = JDABuilder.createDefault(discordToken)
+                               .addEventListeners(new DiscordListener())
                                .setActivity(Activity.playing("Fortnite"))
 				   			   .build();
         

@@ -16,6 +16,11 @@ public class DiscordListener extends ListenerAdapter {
     
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        // ignore bot messages
+        if (event.getAuthor().isBot()) {
+            return;
+        }
+        
         // ensure server and channel id are set in prefs
         long serverID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_SERVER_ID_KEY, 0L);
         long channelID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_CHANNEL_ID_KEY, 0L);

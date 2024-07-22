@@ -45,8 +45,12 @@ public class CommandDiscord implements CommandExecutor {
         // build message string
         String msg = "";
         
-        for (String currWord : args) {
-            msg += currWord;
+        for (int i = 0; i < args.length; i++) {
+            msg += args[i];
+            
+            if (i != args.length - 1) {
+                msg += " ";
+            }
         }
         
         // send message
