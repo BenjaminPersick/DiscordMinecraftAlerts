@@ -45,8 +45,12 @@ public class CommandChannelID implements CommandExecutor {
 		@Nullable
 		JDA bot = DiscordMinecraftAlertsPlugin.getDiscordBot();
 		
+		long serverID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_SERVER_ID_KEY, 0L);
+		
 		if (bot == null) {
 			sender.sendMessage("Bot is null tho...");
+		} else if (serverID == 0) {
+		    sender.sendMessage("Server ID is null tho...");
 		} else {
 			bot.getTextChannelById(channelID).sendMessage("Synced with Minecraft server!");
 		}

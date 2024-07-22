@@ -29,6 +29,14 @@ public class MinecraftListener implements Listener {
 			return;
 		}
 		
+		// attempt to retrieve server id
+		long serverID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_SERVER_ID_KEY, 0L);
+		
+		if (serverID == 0) {
+		    Bukkit.getLogger().log(Level.WARNING, "Unable to send join message: Discord server ID not set.");
+		    return;
+		}
+		
 		// attempt to retrieve channel id
 		long channelID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_CHANNEL_ID_KEY, 0L);
 		
@@ -38,7 +46,7 @@ public class MinecraftListener implements Listener {
 		}
 		
 		// send message
-		bot.getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " joined the game*");
+		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " joined the game*");
 	}
 	
 	@EventHandler
@@ -52,6 +60,14 @@ public class MinecraftListener implements Listener {
 			return;
 		}
 		
+		// attempt to retrieve server id
+        long serverID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_SERVER_ID_KEY, 0L);
+        
+        if (serverID == 0) {
+            Bukkit.getLogger().log(Level.WARNING, "Unable to send quit message: Discord server ID not set.");
+            return;
+        }
+		
 		// attempt to retrieve channel id
 		long channelID = prefs.getLong(DiscordMinecraftAlertsPlugin.DISCORD_CHANNEL_ID_KEY, 0L);
 		
@@ -61,6 +77,6 @@ public class MinecraftListener implements Listener {
 		}
 		
 		// send message
-		bot.getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " left the game*");
+		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " left the game*");
 	}
 }

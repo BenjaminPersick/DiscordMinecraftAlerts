@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
 	public static final String DISCORD_TOKEN_KEY = "discord_token";
+	public static final String DISCORD_SERVER_ID_KEY = "discord_server_id";
 	public static final String DISCORD_CHANNEL_ID_KEY = "discord_channel_id";
 	
 	private Preferences prefs;
@@ -28,6 +29,7 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         
         // register commands
         this.getCommand("bottoken").setExecutor(new CommandBotToken(this));
+        this.getCommand("serverid").setExecutor(new CommandServerID());
         this.getCommand("channelid").setExecutor(new CommandChannelID());
     }
 	

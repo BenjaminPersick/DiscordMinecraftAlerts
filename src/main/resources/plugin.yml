@@ -6,6 +6,10 @@ commands:
         description: Sets the Discord bot token to be used
         usage: /bottoken <token>
         permission: discordminecraftalerts.bottoken
+    serverid:
+        description: Sets the Discord Server ID to be used to send messages
+        usage: /serverid <Server ID>
+        permission: discordminecraftalerts.serverid
     channelid:
         description: Sets the Discord Channel ID to be used to send messages
         usage: /channelid <Channel ID>
