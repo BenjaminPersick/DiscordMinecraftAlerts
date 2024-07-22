@@ -30,7 +30,7 @@ public class DiscordListener extends ListenerAdapter {
         }
         
         if (event.getGuild().getIdLong() == serverID && event.getChannel().getIdLong() == channelID) {
-            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE +  "[Discord] " + ChatColor.WHITE + ChatColor.BOLD + event.getAuthor().getName() + ": " + ChatColor.RESET + event.getMessage().getContentDisplay());
+            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE +  "[Discord] " + ChatColor.WHITE + ChatColor.BOLD + event.getAuthor().getEffectiveName() + ": " + ChatColor.RESET + event.getMessage().getContentStripped());
             
             event.getMessage().addReaction(Emoji.fromUnicode("U+1F441")).queue();
         }
