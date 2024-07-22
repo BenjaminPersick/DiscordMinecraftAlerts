@@ -25,6 +25,10 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         
         // initialize Minecraft event listener
         getServer().getPluginManager().registerEvents(new MinecraftListener(), this);
+        
+        // register commands
+        this.getCommand("bottoken").setExecutor(new CommandBotToken(this));
+        this.getCommand("channelid").setExecutor(new CommandChannelID());
     }
 	
 	/**
