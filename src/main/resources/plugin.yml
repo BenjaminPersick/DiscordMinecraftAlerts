@@ -8,9 +8,13 @@ commands:
         permission: discordminecraftalerts.bottoken
     serverid:
         description: Sets the Discord Server ID to be used to send messages
-        usage: /serverid <Server ID>
+        usage: /serverid <server ID>
         permission: discordminecraftalerts.serverid
     channelid:
         description: Sets the Discord Channel ID to be used to send messages
-        usage: /channelid <Channel ID>
+        usage: /channelid <channel ID>
         permission: discordminecraftalerts.channelid
+    discord:
+        description: Sends a message to the Discord
+        usage: /discord <message>
+        permission: discordminecraftalerts.discord

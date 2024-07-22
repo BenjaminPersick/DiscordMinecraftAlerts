@@ -1,8 +1,9 @@
 package com.benpersick.dmcalerts;
 
-import org.bukkit.Color;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.dv8tion.jda.api.*;
+import net.dv8tion.jda.api.entities.Activity;
 import java.util.prefs.*;
 import javax.annotation.Nullable;
 
@@ -31,6 +32,7 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         this.getCommand("bottoken").setExecutor(new CommandBotToken(this));
         this.getCommand("serverid").setExecutor(new CommandServerID());
         this.getCommand("channelid").setExecutor(new CommandChannelID());
+        this.getCommand("discord").setExecutor(new CommandDiscord());
     }
 	
 	/**
@@ -43,12 +45,13 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         
         // initialize JDA, if applicable
         if (discordToken.equals("")) {
-        	getServer().broadcastMessage(Color.ORANGE + "Discord bot token unset! Use /bottoken <token> to set it.");
+        	getServer().broadcastMessage(ChatColor.GOLD + "Discord bot token unset! Use /bottoken <token> to set it.");
         	
         	return false;
         }
         
         discordBot = JDABuilder.createDefault(discordToken)
+                               .setActivity(Activity.playing("Fortnite"))
 				   			   .build();
         
         // TODO add event listener

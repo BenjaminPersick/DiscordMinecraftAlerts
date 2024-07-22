@@ -2,7 +2,7 @@ package com.benpersick.dmcalerts;
 
 import java.util.prefs.Preferences;
 import javax.annotation.Nullable;
-import org.bukkit.Color;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,7 +20,7 @@ public class CommandChannelID implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		// ensure correct number of arguments
 		if (args.length != 1) {
-			sender.sendMessage(Color.RED +  "Incorrect number of arguments");
+			sender.sendMessage(ChatColor.RED +  "Incorrect number of arguments");
 			
 			return false;
 		}
@@ -39,7 +39,7 @@ public class CommandChannelID implements CommandExecutor {
 		// store channel ID
 		prefs.putLong(DiscordMinecraftAlertsPlugin.DISCORD_CHANNEL_ID_KEY, channelID);
 		
-		sender.sendMessage(Color.GREEN + "Channel ID successfully set.");
+		sender.sendMessage(ChatColor.GREEN + "Channel ID successfully set.");
 		
 		// attempt to send confirmation message
 		@Nullable

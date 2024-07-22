@@ -1,7 +1,7 @@
 package com.benpersick.dmcalerts;
 
 import java.util.prefs.Preferences;
-import org.bukkit.Color;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +17,7 @@ public class CommandServerID implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // ensure correct number of args
         if (args.length != 1) {
-            sender.sendMessage(Color.RED + "Incorrect number of arguments");
+            sender.sendMessage(ChatColor.RED + "Incorrect number of arguments");
             
             return false;
         }
@@ -36,7 +36,7 @@ public class CommandServerID implements CommandExecutor {
         // store server ID
         prefs.putLong(DiscordMinecraftAlertsPlugin.DISCORD_SERVER_ID_KEY, serverID);
         
-        sender.sendMessage(Color.GREEN + "Server ID successfully set.");
+        sender.sendMessage(ChatColor.GREEN + "Server ID successfully set.");
         
         return true;
     }
