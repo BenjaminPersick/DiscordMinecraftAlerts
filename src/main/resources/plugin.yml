@@ -2,11 +2,11 @@ name: DiscordMinecraftAlerts
 version: 1.0.0
 main: com.benpersick.dmcalerts.DiscordMinecraftAlertsPlugin
 commands:
-	bottoken:
-		description: Sets the Discord bot token to be used
-		usage: /bottoken <token>
-		permission: discordminecraftalerts.bottoken
-	channelid:
-		description: Sets the Discord Channel ID to be used to send messages
-		usage: /channelid <Channel ID>
-		permission: discordminecraftalerts.channelid
+    bottoken:
+        description: Sets the Discord bot token to be used
+        usage: /bottoken <token>
+        permission: discordminecraftalerts.bottoken
+    channelid:
+        description: Sets the Discord Channel ID to be used to send messages
+        usage: /channelid <Channel ID>
+        permission: discordminecraftalerts.channelid

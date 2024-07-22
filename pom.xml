@@ -2,9 +2,31 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.benpersick</groupId>
   <artifactId>discord-minecraft-alerts</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.4-SNAPSHOT</version>
   <name>DiscordMinecraftAlerts</name>
   <description>A Spigot plugin and Discord bot which sends messages in a Discord server whenever a player leaves or joins a paired Minecraft server.</description>
+  
+  <build>
+  		<defaultGoal>package</defaultGoal>
+  		<plugins>
+      		<plugin>
+        		<artifactId>maven-assembly-plugin</artifactId>
+    			<executions>
+      				<execution>
+        				<phase>package</phase>
+        				<goals>
+          					<goal>single</goal>
+        				</goals>
+      				</execution>
+    			</executions>
+    			<configuration>
+          			<descriptorRefs>
+            			<descriptorRef>jar-with-dependencies</descriptorRef>
+          			</descriptorRefs>
+        		</configuration>
+      		</plugin>
+    	</plugins>
+  </build>
   
   <repositories>
         <repository>
