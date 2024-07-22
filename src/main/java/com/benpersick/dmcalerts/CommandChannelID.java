@@ -52,7 +52,7 @@ public class CommandChannelID implements CommandExecutor {
 		} else if (serverID == 0) {
 		    sender.sendMessage("Server ID is null tho...");
 		} else {
-			bot.getTextChannelById(channelID).sendMessage("Synced with Minecraft server!");
+			bot.getTextChannelById(channelID).sendMessage("Synced with Minecraft server!").queue();
 		}
 		
 		return true;

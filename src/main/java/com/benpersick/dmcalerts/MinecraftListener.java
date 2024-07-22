@@ -46,7 +46,7 @@ public class MinecraftListener implements Listener {
 		}
 		
 		// send message
-		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " joined the game*");
+		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " joined the game*").queue();
 	}
 	
 	@EventHandler
@@ -77,6 +77,6 @@ public class MinecraftListener implements Listener {
 		}
 		
 		// send message
-		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " left the game*");
+		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " left the game*").queue();
 	}
 }
