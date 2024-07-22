@@ -1,5 +1,6 @@
 package com.benpersick.dmcalerts;
 
+import java.util.logging.Level;
 import java.util.prefs.Preferences;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

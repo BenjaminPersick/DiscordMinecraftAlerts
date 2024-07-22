@@ -4,6 +4,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+
 import java.util.prefs.*;
 import javax.annotation.Nullable;
 
@@ -50,7 +52,7 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         	return false;
         }
         
-        discordBot = JDABuilder.createDefault(discordToken)
+        discordBot = JDABuilder.createDefault(discordToken, GatewayIntent.MESSAGE_CONTENT)
                                .addEventListeners(new DiscordListener())
                                .setActivity(Activity.playing("Fortnite"))
 				   			   .build();
