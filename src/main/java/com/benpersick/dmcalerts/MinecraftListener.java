@@ -77,8 +77,9 @@ public class MinecraftListener implements Listener {
 			return;
 		}
 		
-		// send message
+		// send message and update status
 		bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " left the game*").queue();
+		DiscordMinecraftAlertsPlugin.updateBotStatus();
 	}
 	
 	@EventHandler
@@ -108,7 +109,8 @@ public class MinecraftListener implements Listener {
             return;
         }
         
-        // send message
+        // send message and update status
         bot.getGuildById(serverID).getTextChannelById(channelID).sendMessage("*" + event.getPlayer().getName() + " was kicked for " + event.getReason() + "*").queue();
+        DiscordMinecraftAlertsPlugin.updateBotStatus();
 	}
 }

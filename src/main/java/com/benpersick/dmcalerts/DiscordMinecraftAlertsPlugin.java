@@ -1,11 +1,11 @@
 package com.benpersick.dmcalerts;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-
 import java.util.EnumSet;
 import java.util.prefs.*;
 import javax.annotation.Nullable;
@@ -53,12 +53,14 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
         	return false;
         }
         
+        // get number of players and player limit
+        int numOnline = getServer().getOnlinePlayers().size();
+        int playerLimit = getServer().getMaxPlayers();
+        
         discordBot = JDABuilder.createDefault(discordToken, EnumSet.of(GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT))
                                .addEventListeners(new DiscordListener())
-                               .setActivity(Activity.playing("Fortnite"))
+                               .setActivity(Activity.customStatus(numOnline + " / " + playerLimit + " players online"))
 				   			   .build();
-        
-        // TODO add event listener
         
         return true;
 	}
@@ -71,5 +73,19 @@ public class DiscordMinecraftAlertsPlugin extends JavaPlugin {
     @Nullable
     public static JDA getDiscordBot() {
     	return discordBot;
+    }
+    
+    /**
+     * Updates the discord bot's status to display the current player
+     * count
+     */
+    public static void updateBotStatus() {
+        if (discordBot != null) {
+            // get number of players and player limit
+            int numOnline = Bukkit.getServer().getOnlinePlayers().size();
+            int playerLimit = Bukkit.getServer().getMaxPlayers();
+            
+            discordBot.getPresence().setActivity(Activity.customStatus(numOnline + " / " + playerLimit + " players online"));
+        }
     }
 }
